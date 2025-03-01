@@ -42,6 +42,7 @@ public class Parry : MonoBehaviour
         if (other.gameObject.tag == "Fireball")
         {
             Debug.Log("Parry");
+            GameManager.Instance.AddCombo();
             Destroy(other.gameObject);
         }
     }
