@@ -19,6 +19,9 @@ public class DeathCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Fireball")
         {
+            GameManager.Instance.ResetCombo();
+            Destroy(other.gameObject);
+            //Write something to play death animation and run below
             Debug.Log("Ouch! Collision");
         }
     }
