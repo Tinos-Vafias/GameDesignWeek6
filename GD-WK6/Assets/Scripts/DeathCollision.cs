@@ -21,9 +21,13 @@ public class DeathCollision : MonoBehaviour
         if (other.gameObject.tag == "Fireball")
         {
             GameManager.Instance.ResetCombo();
+
+            //This currently does nothing, for whatever reason I couldn't get it to destroy itself after the animation
             other.gameObject.GetComponent<Animator>().SetBool("Explode", true);
             // Disable collider to prevent multiple collisions
             other.collider.enabled = false;
+
+
             Destroy(other.gameObject);
             //Write something to play death animation and run below
             Debug.Log("Ouch! Collision");
