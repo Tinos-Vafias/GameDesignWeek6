@@ -21,6 +21,10 @@ public class CameraShake : MonoBehaviour
     private Vector3 shakeDirection;
     private bool shakeDirectionForward = true;
     public bool isOn;
+	
+	private float maxShakeMagnitude = 0.15f;
+	private float initialMagnitude;
+	
     private void Awake()
     {
         if (Instance == null)
@@ -36,27 +40,33 @@ public class CameraShake : MonoBehaviour
 
     void Start()
     {
-        initialPosition = transform.localPosition;
+        initialPosition = transform.position;
+		initialMagnitude = defaultShakeMagnitude;
     }
+	
     public void Toggle()
     {
         isOn = !isOn;
     }
+	
     public void StartShake()
     {
         if (isOn)
         {
-            defaultShakeTimer = .1f * GameManager.Instance.combo;
-            defaultShakeMagnitude = .1f * GameManager.Instance.combo;
-            shakeIntervalTimerMax = .1f * GameManager.Instance.combo;
-            BeginShake(defaultShakeTimer, defaultShakeMagnitude, shakeIntervalTimerMax, Vector3.zero);
+            defaultShakeMagnitude *= GameManager.Instance.combo;
+			if (defaultShakeMagnitude > maxShakeMagnitude) defaultShakeMagnitude = maxShakeMagnitude;
+            SetShakeVariables(defaultShakeTimer, defaultShakeMagnitude, shakeIntervalTimerMax, Vector3.zero);
         }
     }
-    public void Reset()
+	
+    public void ResetCamera()
     {
-        defaultShakeTimer = 0.0f;
-        defaultShakeMagnitude = 0.0f;
-        transform.localPosition = initialPosition;
+        shakeTimer = 0.0f;
+        shakeMagnitude = 0.0f;
+        shakeIntervalTimer = 0.0f;
+        shakeDirection = Vector3.zero;
+        transform.position = initialPosition;
+		defaultShakeMagnitude = initialMagnitude;
     }
 
     /*
@@ -67,7 +77,7 @@ public class CameraShake : MonoBehaviour
      * @param interval: In a directional camera shake, the amount of time between its back and forth motion
      * @param direction: The general direction of the camera shake, put in Vector3.zero if you want it to be completely random
      */
-    public void BeginShake(float timer, float magnitude, float interval, Vector3 direction)
+    public void SetShakeVariables(float timer, float magnitude, float interval, Vector3 direction)
     {
         shakeTimer = timer;
         shakeMagnitude = magnitude;
@@ -86,12 +96,12 @@ public class CameraShake : MonoBehaviour
             // no direction given, do random shake
             if (shakeDirection == Vector3.zero)
             {
-                transform.localPosition = initialPosition + (Vector3)Random.insideUnitCircle * shakeMagnitude;
+                transform.position = initialPosition + (Vector3)Random.insideUnitCircle * shakeMagnitude;
             }
             else
             {
                 // directional shake -- do back and forth movement
-                transform.localPosition = initialPosition + 
+                transform.position = initialPosition + 
                                           (shakeDirection * (shakeMagnitude * (shakeDirectionForward ? 1 : -1)));
                 shakeIntervalTimer -= Time.deltaTime;
                 if (shakeIntervalTimer <= 0)
@@ -102,7 +112,12 @@ public class CameraShake : MonoBehaviour
             }
             
             // reset camera after shake
-            if (shakeTimer <= 0) transform.localPosition = initialPosition;
+            if (shakeTimer <= 0) transform.position = initialPosition;
         }
     }
+	
+	private void Update()
+	{
+		Shake();
+	}
 }
