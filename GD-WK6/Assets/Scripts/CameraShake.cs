@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
+
+    public static CameraShake Instance { get; private set; }
     // initial position of the camera -- used to reset the camera after shake
     private Vector3 initialPosition;
     
@@ -15,21 +17,48 @@ public class CameraShake : MonoBehaviour
     private float shakeTimer;
     private float shakeMagnitude;
     private float shakeIntervalTimer;
+    
     private Vector3 shakeDirection;
     private bool shakeDirectionForward = true;
-    
+    public bool isOn;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Keeps it alive between scenes
+        }
+        else
+        {
+            Destroy(gameObject); // Prevents duplicates
+        }
+    }
+
     void Start()
     {
         initialPosition = transform.localPosition;
     }
-    
-    void Update()
+    public void Toggle()
     {
-        // keyboard input for testing -- can be deleted later 
-        if (Input.GetKeyDown(KeyCode.Space)) BeginShake(defaultShakeTimer, defaultShakeMagnitude, shakeIntervalTimerMax, Vector3.zero);
-        Shake();
+        isOn = !isOn;
     }
-    
+    public void StartShake()
+    {
+        if (isOn)
+        {
+            defaultShakeTimer = .1f * GameManager.Instance.combo;
+            defaultShakeMagnitude = .1f * GameManager.Instance.combo;
+            shakeIntervalTimerMax = .1f * GameManager.Instance.combo;
+            BeginShake(defaultShakeTimer, defaultShakeMagnitude, shakeIntervalTimerMax, Vector3.zero);
+        }
+    }
+    public void Reset()
+    {
+        defaultShakeTimer = 0.0f;
+        defaultShakeMagnitude = 0.0f;
+        transform.localPosition = initialPosition;
+    }
+
     /*
      * @brief: Begins the camera shake by setting all it's starting values
      *
@@ -44,6 +73,7 @@ public class CameraShake : MonoBehaviour
         shakeMagnitude = magnitude;
         shakeIntervalTimer = interval / 2;
         shakeDirection = direction.normalized;
+        Shake();
     }
 
     private void Shake()

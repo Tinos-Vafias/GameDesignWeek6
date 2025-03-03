@@ -6,7 +6,6 @@ public class GameManager : MonoBehaviour
 
     public int combo = 0;
     public bool isGameOver = false;
-
     private void Awake()
     {
         if (Instance == null)
@@ -26,6 +25,7 @@ public class GameManager : MonoBehaviour
         combo += 1;
         FireProjectile.Instance.Combo();
         ComboDisplayer.Instance.ScaleUp();
+        CameraShake.Instance.StartShake();
     }
     public void ResetCombo()
     {
@@ -33,10 +33,18 @@ public class GameManager : MonoBehaviour
         combo = 0;
         FireProjectile.Instance.ResetCombo();
         ComboDisplayer.Instance.ResetScale();
+        CameraShake.Instance.Reset();
     }
 
-    public void Toggles()
+
+    //All toggles
+    public void ToggleCombo()
     {
-        //edit toggles via buttons here
+        Debug.Log("Toggle Combo");
+        ComboDisplayer.Instance.Toggle();
+    }
+    public void ToggleShake()
+    {
+        CameraShake.Instance.Toggle();
     }
 }
