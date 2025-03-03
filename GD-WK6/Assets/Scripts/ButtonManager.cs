@@ -9,7 +9,8 @@ public class ButtonManager : MonoBehaviour
     public enum ButtonType
     {
         Combo,
-        Shake
+        Shake,
+        Sounds
     }
 
     //Add buttons in inspector, access via the enum
@@ -25,6 +26,7 @@ public class ButtonManager : MonoBehaviour
 
         buttons[(int)ButtonType.Combo].onClick.AddListener(GameManager.Instance.ToggleCombo);
         buttons[(int)ButtonType.Shake].onClick.AddListener(GameManager.Instance.ToggleShake);
+        buttons[(int)ButtonType.Sounds].onClick.AddListener(GameManager.Instance.ToggleSounds);
 
 
 

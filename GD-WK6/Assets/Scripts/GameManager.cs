@@ -49,4 +49,8 @@ public class GameManager : MonoBehaviour
     {
         CameraShake.Instance.Toggle();
     }
+    public void ToggleSounds()
+    {
+        ParrySound.Instance.Toggle();
+    }
 }
