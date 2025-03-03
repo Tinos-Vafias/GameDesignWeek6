@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
         FireProjectile.Instance.Combo();
         ComboDisplayer.Instance.ScaleUp();
         CameraShake.Instance.StartShake();
+		ParrySound.Instance.PlaySound();
     }
     public void ResetCombo()
     {
@@ -33,7 +34,8 @@ public class GameManager : MonoBehaviour
         combo = 0;
         FireProjectile.Instance.ResetCombo();
         ComboDisplayer.Instance.ResetScale();
-        CameraShake.Instance.Reset();
+        CameraShake.Instance.ResetCamera();
+		ParrySound.Instance.ResetSemitone();
     }
 
 
