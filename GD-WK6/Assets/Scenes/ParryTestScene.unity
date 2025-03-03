@@ -1375,6 +1375,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cannon
       objectReference: {fileID: 0}
+    - target: {fileID: 1881473915532561282, guid: 93f08ce1064e73d4fb4db5e3b722404a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+    - target: {fileID: 1881473915532561282, guid: 93f08ce1064e73d4fb4db5e3b722404a, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2348948642587500121, guid: 93f08ce1064e73d4fb4db5e3b722404a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.95
