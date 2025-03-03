@@ -21,8 +21,13 @@ public class ParrySound : MonoBehaviour
 	private int playCounter;
 	private int semitoneIndex;
     private float startingPitch;
-    
-	private void Awake()
+
+	public bool isOn;
+    public void Toggle()
+    {
+        isOn = !isOn;
+    }
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -55,10 +60,13 @@ public class ParrySound : MonoBehaviour
 		float unadjustedPitch = audioSource.pitch;
 		int microtoneRandomIncrement = Random.Range(5, 10);
 		audioSource.pitch *= Mathf.Pow(Microtone, microtoneRandomIncrement);
-		
+
 		// play sound ONCE
-        audioSource.PlayOneShot(parrySound);
-		audioSource.pitch = unadjustedPitch; // change back to without microtones
+		if (isOn)
+		{
+			audioSource.PlayOneShot(parrySound);
+			audioSource.pitch = unadjustedPitch; // change back to without microtones
+		}
     }
 	
 	public void ResetSemitone()
