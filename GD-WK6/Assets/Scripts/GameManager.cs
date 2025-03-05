@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         score += 1 + combo / 20;
         FireProjectile.Instance.Combo();
         ComboDisplayer.Instance.ScaleUp();
+        ComboDisplayer.Instance.StartFade(1, 0, .75f);
         CameraShake.Instance.StartShake();
 		ParrySound.Instance.PlaySound();
         Parry.Instance.PlayAnim();
