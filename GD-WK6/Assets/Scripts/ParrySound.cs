@@ -13,7 +13,7 @@ public class ParrySound : MonoBehaviour
 	private const float Semitone = 1.059463f;
 	private const float Microtone = 1.00057779f;
 	/* D minor (F major) pentatonic scale - going D, F, G, A, C*/
-	private List<int> PentatonicSemitones = new List<int>{ 1, 3, 7, 10, 15, 12 };
+	private List<int> PentatonicSemitones = new List<int>{ 1, 3, 2, 2, 3, 2 };
 	
 	// semitone variables 
 	[SerializeField] private int semitoneChangeThreshold;
@@ -61,7 +61,7 @@ public class ParrySound : MonoBehaviour
 		
 		// adjust by a few microtones, makes it subtly less repetitive 
 		float unadjustedPitch = audioSource.pitch;
-		int microtoneRandomIncrement = Random.Range(5, 10);
+		int microtoneRandomIncrement = Random.Range(10, 20);
 		audioSource.pitch *= Mathf.Pow(Microtone, microtoneRandomIncrement);
 
 		// play sound ONCE
