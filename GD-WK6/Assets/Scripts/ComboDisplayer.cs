@@ -40,7 +40,7 @@ public class ComboDisplayer : MonoBehaviour
         text.enabled = true;
         if (isOn)
         {
-            text.color = colors[Mathf.Min((Mathf.FloorToInt(GameManager.Instance.combo / 10)), colors.Length - 1)];
+            text.color = colors[Mathf.Min((Mathf.FloorToInt(GameManager.Instance.combo / 20)), colors.Length - 1)];
         }
         else
         {
