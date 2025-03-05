@@ -4,8 +4,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public int combo = 0;
+    public float combo = 0;
     public bool isGameOver = false;
+    public int score = 0;
+    public float health = 100f;
     private void Awake()
     {
         if (Instance == null)
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Adding Combo");
         combo += 1;
+        score += 1 + (int)Mathf.Floor(combo / 20);
         FireProjectile.Instance.Combo();
         ComboDisplayer.Instance.ScaleUp();
         CameraShake.Instance.StartShake();
