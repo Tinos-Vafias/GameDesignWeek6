@@ -5,6 +5,11 @@ public class Parry : MonoBehaviour
     public GameObject targetObject;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider;
+    
+    private Animator anim;
+    
+    float timer;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,6 +17,7 @@ public class Parry : MonoBehaviour
         {
             spriteRenderer = targetObject.GetComponent<SpriteRenderer>();
             boxCollider = targetObject.GetComponent<BoxCollider2D>();
+            anim = GetComponent<Animator>();
         }
     }
 
@@ -34,6 +40,11 @@ public class Parry : MonoBehaviour
             boxCollider.enabled = isSpacePressed;
         }
 
+        timer += Time.deltaTime;
+        if (timer > .2)
+        {
+            anim.SetBool("PlayAnim", false);
+        }
     }
     
 
@@ -43,6 +54,9 @@ public class Parry : MonoBehaviour
         {
             Debug.Log("Parry");
             GameManager.Instance.AddCombo();
+
+            timer = 0;
+            anim.SetBool("PlayAnim", true);
             Destroy(other.gameObject);
         }
     }

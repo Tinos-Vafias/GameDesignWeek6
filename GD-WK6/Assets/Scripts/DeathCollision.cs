@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections; // Required for IEnumerator
+using UnityEngine.SceneManagement;
 
 public class DeathCollision : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class DeathCollision : MonoBehaviour
 
             Destroy(other.gameObject);
             //Write something to play death animation and run below
+            SceneManager.LoadScene("GameOverScreen"); 
             Debug.Log("Ouch! Collision");
         }
     }
