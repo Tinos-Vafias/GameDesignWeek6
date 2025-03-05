@@ -8,9 +8,10 @@ public class ComboDisplayer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public bool isOn;
     public TextMeshProUGUI text;
-    public int originalSize = 36;
+    public static int originalSize = 36;
     public Color[] colors = { Color.white, Color.yellow, Color.red, Color.black }; //change this as needed to fit
 
+    private int currentSize = originalSize;
     private void Awake()
     {
         if (Instance == null)
@@ -41,6 +42,7 @@ public class ComboDisplayer : MonoBehaviour
         if (isOn)
         {
             text.color = colors[Mathf.Min((Mathf.FloorToInt(GameManager.Instance.combo / 20)), colors.Length - 1)];
+            text.fontSize = currentSize;
         }
         else
         {
@@ -51,20 +53,17 @@ public class ComboDisplayer : MonoBehaviour
 
     public void ScaleUp()
     {
-        if (isOn)
+        if (currentSize < 258)
         {
-            if (text.fontSize < 576)
-            {
-                text.fontSize = originalSize + 6 * GameManager.Instance.combo;
-            }
-            else
-            {
-                text.fontSize = 576;
-            }
+            currentSize = originalSize + 6 * GameManager.Instance.combo;
+        }
+        else
+        {
+            currentSize = 258;
         }
     }
     public void ResetScale()
     {
-        text.fontSize = originalSize;
+        currentSize = originalSize;
     }
 }

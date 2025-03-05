@@ -360,7 +360,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOn: 0
   text: {fileID: 0}
-  originalSize: 36
   colors:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 1, g: 0.99894565, b: 0, a: 1}
@@ -608,8 +607,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.490625, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5583333}
-  m_AnchoredPosition: {x: -215, y: 192.2}
-  m_SizeDelta: {x: 19.3483, y: 0}
+  m_AnchoredPosition: {x: -214.66293, y: 193.1}
+  m_SizeDelta: {x: 18.674149, y: 1.800003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &498157754
 GameObject:
@@ -754,8 +753,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.490625, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5583333}
-  m_AnchoredPosition: {x: 99, y: 192.5}
-  m_SizeDelta: {x: 19.3483, y: 0}
+  m_AnchoredPosition: {x: 99.337074, y: 193.25}
+  m_SizeDelta: {x: 18.674149, y: 1.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &514014545
 GameObject:
@@ -1231,8 +1230,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.490625, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5583333}
-  m_AnchoredPosition: {x: -373.5, y: 194}
-  m_SizeDelta: {x: 19.3483, y: 0}
+  m_AnchoredPosition: {x: -372.91293, y: 194}
+  m_SizeDelta: {x: 18.174133, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &701103185
 MonoBehaviour:
@@ -1483,8 +1482,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.490625, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5583333}
-  m_AnchoredPosition: {x: -53, y: 192.5}
-  m_SizeDelta: {x: 19.3483, y: 0}
+  m_AnchoredPosition: {x: -53.662926, y: 193.25}
+  m_SizeDelta: {x: 20.674152, y: 1.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1450372339
 GameObject:
@@ -2102,7 +2101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Health
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
