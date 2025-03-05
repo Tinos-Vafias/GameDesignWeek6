@@ -22,7 +22,7 @@ public class DeathCollision : MonoBehaviour
         if (other.gameObject.tag == "Fireball")
         {
 
-            GameManager.Instance.health = GameManager.Instance.health - (5 + 5*(GameManager.Instance.combo/20));
+            GameManager.Instance.health = GameManager.Instance.health - (5 + 10*(GameManager.Instance.combo/20));
             GameManager.Instance.ResetCombo();
 
             //This currently does nothing, for whatever reason I couldn't get it to destroy itself after the animation
