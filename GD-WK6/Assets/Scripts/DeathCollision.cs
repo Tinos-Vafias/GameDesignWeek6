@@ -28,10 +28,17 @@ public class DeathCollision : MonoBehaviour
             // Disable collider to prevent multiple collisions
             other.collider.enabled = false;
 
-
+            //Damage is scaled based on the player's current combo count
+            GameManager.Instance.health = GameManager.Instance.health - (5f + GameManager.Instance.combo);
             Destroy(other.gameObject);
+
+
             //Write something to play death animation and run below
-            SceneManager.LoadScene("GameOverScreen"); 
+
+            if (GameManager.Instance.health <= 0)
+            {
+                SceneManager.LoadScene("GameOverScreen");
+            }
             Debug.Log("Ouch! Collision");
         }
     }

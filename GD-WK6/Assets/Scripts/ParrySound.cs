@@ -18,7 +18,10 @@ public class ParrySound : MonoBehaviour
 	// semitone variables 
 	[SerializeField] private int semitoneChangeThreshold;
 	private int semitoneChange;
-	private int playCounter;
+	private int semitoneChangeIncrement = 10;
+
+
+    private int playCounter;
 	private int semitoneIndex;
     private float startingPitch;
 
@@ -49,7 +52,7 @@ public class ParrySound : MonoBehaviour
 		{
 			playCounter = 0;
 			semitoneIndex++;
-			semitoneChange *= semitoneChange;
+			semitoneChange += semitoneChange + semitoneChangeIncrement;
 			int pitch = PentatonicSemitones[semitoneIndex];
 			audioSource.pitch *= Mathf.Pow(Semitone, pitch);
 		}

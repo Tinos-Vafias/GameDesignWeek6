@@ -1,3 +1,4 @@
+using UnityEditor.U2D.Sprites;
 using UnityEngine;
 
 public class FireProjectile : MonoBehaviour
@@ -11,14 +12,15 @@ public class FireProjectile : MonoBehaviour
     private float normalSpeed = 5.0f;
     private float normalInterval = 2.0f;
     
-    private float minInterval = 0.1f;
-    private float maxSpeed = 17.5f;
+    private float minInterval = 0.3f;
+    private float maxSpeed = 12.5f;
+
+    bool startRandom = false;
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Keeps it alive between scenes
         }
         else
         {
@@ -49,12 +51,25 @@ public class FireProjectile : MonoBehaviour
 
     public void Combo()
     {
-        spawnInterval = Mathf.Clamp(spawnInterval - 0.25f, minInterval, 2.0f);
-        speed = Mathf.Clamp(speed + 2.5f, 0.0f, maxSpeed);
+        if (!startRandom)
+        {
+            spawnInterval = Mathf.Clamp(spawnInterval - 0.1f, minInterval, 2.0f);
+            speed = Mathf.Clamp(speed + 0.5f, 0.0f, maxSpeed);
+        }
+        else
+        {
+            spawnInterval = minInterval + Random.Range(0.0f, 0.25f);
+            speed = maxSpeed + Random.Range(-2.0f, 2.0f);
+        }
+        if (speed == maxSpeed && spawnInterval == minInterval)
+        {
+            startRandom = true;
+        }
     }
     public void ResetCombo()
     {
         spawnInterval = normalInterval;
         speed = normalSpeed;
+        startRandom = false;
     }
 }

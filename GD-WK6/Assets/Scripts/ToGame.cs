@@ -9,6 +9,8 @@ public class ToGame : MonoBehaviour
     
     public void LoadScene()
     {
+        GameManager.Instance.score = 0;
+        GameManager.Instance.health = 100f;
         SceneManager.LoadScene(sceneToLoad); 
     }
 }

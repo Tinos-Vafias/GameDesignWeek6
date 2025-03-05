@@ -9,7 +9,7 @@ public class ComboDisplayer : MonoBehaviour
     public bool isOn;
     public TextMeshProUGUI text;
     public int originalSize = 36;
-    public Color[] colors = { Color.red, Color.green, Color.blue, Color.yellow }; //change this as needed to fit
+    public Color[] colors = { Color.white, Color.yellow, Color.red, Color.black }; //change this as needed to fit
 
     private void Awake()
     {
@@ -53,7 +53,14 @@ public class ComboDisplayer : MonoBehaviour
     {
         if (isOn)
         {
-            text.fontSize = originalSize + 6 * GameManager.Instance.combo;
+            if (text.fontSize < 576)
+            {
+                text.fontSize = originalSize + 6 * GameManager.Instance.combo;
+            }
+            else
+            {
+                text.fontSize = 576;
+            }
         }
     }
     public void ResetScale()
