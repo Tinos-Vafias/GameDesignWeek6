@@ -21,6 +21,8 @@ public class DeathCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Fireball")
         {
+
+            GameManager.Instance.health = GameManager.Instance.health - (5 + 5*(GameManager.Instance.combo/20));
             GameManager.Instance.ResetCombo();
 
             //This currently does nothing, for whatever reason I couldn't get it to destroy itself after the animation
@@ -29,7 +31,6 @@ public class DeathCollision : MonoBehaviour
             other.collider.enabled = false;
 
             //Damage is scaled based on the player's current combo count
-            GameManager.Instance.health = GameManager.Instance.health - (5f + GameManager.Instance.combo);
             Destroy(other.gameObject);
 
 
