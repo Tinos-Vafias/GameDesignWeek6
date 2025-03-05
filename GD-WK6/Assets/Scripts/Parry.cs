@@ -15,6 +15,17 @@ public class Parry : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Keeps it alive between scenes
+        }
+        else
+        {
+            Destroy(gameObject); // Prevents duplicates
+        }
+        
+        
         if (targetObject != null)
         {
             spriteRenderer = targetObject.GetComponent<SpriteRenderer>();
@@ -55,10 +66,13 @@ public class Parry : MonoBehaviour
         if (other.gameObject.tag == "Fireball")
         {
             Debug.Log("Parry");
-            GameManager.Instance.AddCombo();
 
+            if (isOn == true)
+            {
+                anim.SetBool("PlayAnim", true);
+            }
+            
             timer = 0;
-            PlayAnim();
             Destroy(other.gameObject);
         }
     }

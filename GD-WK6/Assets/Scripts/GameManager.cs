@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour
     {
         ParrySound.Instance.Toggle();
     }
-
     public void ToggleParryAnim()
     {
         Parry.Instance.Toggle();
