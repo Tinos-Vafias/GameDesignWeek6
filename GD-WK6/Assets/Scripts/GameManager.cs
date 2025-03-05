@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         ComboDisplayer.Instance.ScaleUp();
         CameraShake.Instance.StartShake();
 		ParrySound.Instance.PlaySound();
+        Parry.Instance.PlayAnim();
     }
     public void ResetCombo()
     {
@@ -52,5 +53,10 @@ public class GameManager : MonoBehaviour
     public void ToggleSounds()
     {
         ParrySound.Instance.Toggle();
+    }
+
+    public void ToggleParryAnim()
+    {
+        Parry.Instance.Toggle();
     }
 }

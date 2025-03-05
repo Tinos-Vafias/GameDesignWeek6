@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Parry : MonoBehaviour
 {
+    public static Parry Instance { get; private set; }
     public GameObject targetObject;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider;
@@ -9,6 +10,7 @@ public class Parry : MonoBehaviour
     private Animator anim;
     
     float timer;
+    public bool isOn;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -56,8 +58,17 @@ public class Parry : MonoBehaviour
             GameManager.Instance.AddCombo();
 
             timer = 0;
-            anim.SetBool("PlayAnim", true);
+            PlayAnim();
             Destroy(other.gameObject);
         }
+    }
+    
+    public void Toggle()
+    {
+        isOn = !isOn;
+    }
+    public void PlayAnim()
+    {
+        anim.SetBool("PlayAnim", true);
     }
 }

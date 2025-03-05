@@ -10,7 +10,8 @@ public class ButtonManager : MonoBehaviour
     {
         Combo,
         Shake,
-        Sounds
+        Sounds,
+        ParryAnim
     }
 
     //Add buttons in inspector, access via the enum
@@ -27,9 +28,8 @@ public class ButtonManager : MonoBehaviour
         buttons[(int)ButtonType.Combo].onClick.AddListener(GameManager.Instance.ToggleCombo);
         buttons[(int)ButtonType.Shake].onClick.AddListener(GameManager.Instance.ToggleShake);
         buttons[(int)ButtonType.Sounds].onClick.AddListener(GameManager.Instance.ToggleSounds);
-
-
-
+        buttons[(int)ButtonType.ParryAnim].onClick.AddListener(GameManager.Instance.ToggleParryAnim);
+        
 
         Debug.Log("Buttons successfully linked to GameManager.");
     }
