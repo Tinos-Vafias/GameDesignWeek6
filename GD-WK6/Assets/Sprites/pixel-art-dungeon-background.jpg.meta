@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pixel-art-dungeon-background_0: -3897193701000007343
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
