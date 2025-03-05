@@ -66,12 +66,7 @@ public class Parry : MonoBehaviour
         if (other.gameObject.tag == "Fireball")
         {
             Debug.Log("Parry");
-
-            if (isOn == true)
-            {
-                anim.SetBool("PlayAnim", true);
-            }
-            
+            GameManager.Instance.AddCombo();
             timer = 0;
             Destroy(other.gameObject);
         }
@@ -83,6 +78,9 @@ public class Parry : MonoBehaviour
     }
     public void PlayAnim()
     {
-        anim.SetBool("PlayAnim", true);
+        if (isOn)
+        {
+            anim.SetBool("PlayAnim", true);
+        }
     }
 }
