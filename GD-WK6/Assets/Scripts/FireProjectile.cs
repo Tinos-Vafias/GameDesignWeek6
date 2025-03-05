@@ -1,4 +1,4 @@
-using UnityEditor.U2D.Sprites;
+//using UnityEditor.U2D.Sprites;
 using UnityEngine;
 
 public class FireProjectile : MonoBehaviour
